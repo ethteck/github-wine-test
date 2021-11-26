@@ -13,7 +13,7 @@ jobs:
         run: |-
           sudo dpkg --add-architecture i386
           sudo apt-get update
-          sudo apt-get install wine
+          sudo apt-get install wine32
       - name: Download test executable
         run: |-
           wget https://github.com/pbatard/base-console/releases/download/v1.2/base-console.zip
