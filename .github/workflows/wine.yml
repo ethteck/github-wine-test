@@ -1,0 +1,23 @@
+name: PR
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  wine_test:
+    name: test wine
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add i386 architecture and install dependencies
+        run: |-
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install wine
+      - name: Download test executable
+        run: |-
+          wget https://github.com/pbatard/base-console/releases/download/v1.2/base-console.zip
+          unzip base-console.zip
+      - name: Test executable in wine
+        run: |-
+          wine base-console.exe
